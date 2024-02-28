@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useRef, useState } from 'react'
 import Slider from "react-slick";
-// import Buttons from '../Button';
+import { Link } from "react-router-dom";
 import './styles.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,9 +19,10 @@ const Carousels = () => {
     sliderRef.slickNext();
     setCount(count+1)
   };
-  const previous = () => {
-    sliderRef.slickPrev();
-  };
+  // const previous = () => {
+  //   sliderRef.slickPrev();
+  // };
+  
   const settings = {
     dots: false,
     infinite: true,
@@ -59,13 +60,17 @@ const Carousels = () => {
           </div>
           <div className="title-slider">
             <h3 className='text-black'>Share your wishes, Spread the joy</h3>
-          </div>          
+          </div>
+          <div style={{ textAlign: "center" }} className='button-sliders'>
+          { count === 2 && 
+            <Link to="/signup">
+              <Buttons title={"Get Started"} size={"xs"} />
+            </Link>
+          }
+      </div>             
         </div>
       </Slider>
       <div style={{ textAlign: "center" }} className='button-sliders'>
-        { count === 2 && 
-          <Buttons title={"Get Started"} size={"xs"} />
-        }
 
         { count === 0 &&
           <Buttons title={"Next"} size={"xs"} onClick={next} />
