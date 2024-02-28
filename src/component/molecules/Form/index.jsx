@@ -1,50 +1,40 @@
 // import React from 'react'
 
+import Buttons from "../../atom/Button"
+
 const Forms = () => {
   return (
 	<>
-		<form id="form-register" className="space-y-4">
-			<div>
-				<div className="relative">
-					<input
-						id="name"
-						placeholder="Name"
-						className="border w-full transition-all h-10 rounded-md text-sm pl-4 pr-4 placeholder-gray-600 focus:outline-blue-500 bg-white text-black dark:bg-gray-900 dark:text-white dark:focus:outline-blue-300 border-red-500 dark:border-red-400"
-						autoComplete="off"
-						type="text"
-						defaultValue=""
-						name="name"
-					/>
-				</div>
+		<form className="bg-white rounded px-8 pt-6 pb-8 mb-4">
+			<div className="mb-4">
+				<input
+					className="shadow appearance-none border border-[#969696] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					id="username"
+					type="text"
+					placeholder="Name"
+				/>
 			</div>
-			<div>
-				<div className="relative">
-					<input
-						id="email"
-						placeholder="Email"
-						className="border w-full transition-all h-10 rounded-md text-sm pl-4 pr-4 placeholder-gray-600 focus:outline-blue-500 bg-white border-gray-300 text-black dark:bg-gray-900 dark:border-gray-700 dark:text-white dark:focus:outline-blue-300"
-						autoComplete="off"
-						type="text"
-						defaultValue=""
-						name="email"
-					/>
-				</div>
+			<div className="mb-4">
+				<input
+					className="shadow appearance-none border border-[#969696] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					id="email"
+					type="email"
+					placeholder="Email"
+				/>
 			</div>
-
-			<div>
-				<div className="relative">
-					<input
-						id="password"
-						placeholder="Password"
-						className="border w-full transition-all h-10 rounded-md text-sm pl-4 placeholder-gray-600 focus:outline-blue-500 bg-white border-gray-300 text-black dark:bg-gray-900 dark:border-gray-700 dark:text-white dark:focus:outline-blue-300 pr-11"
-						autoComplete="off"
-						type="password"
-						defaultValue=""
-						name="password"
-					/>
-				</div>
+			<div className="mb-6">
+				<input
+					className="shadow appearance-none border border-[#969696] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					id="password"
+					type="password"
+					placeholder="Password"
+				/>
+			</div>
+			<div className="flex items-center justify-center">
+				<Buttons title={"Sign Up"} size={"sm"} />
 			</div>
 		</form>
+
 	</>
 
   )

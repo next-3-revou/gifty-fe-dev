@@ -1,0 +1,13 @@
+.images-carousels {
+    padding-bottom: 15%;
+}
+.button-sliders {
+    padding-top: 10%;
+}
+.title-slider {
+    padding-bottom: 5%;
+}
+.thumbnail {
+    display: flex;
+    justify-content: center;
+}
