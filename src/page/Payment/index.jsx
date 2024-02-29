@@ -1,14 +1,14 @@
 // import React from 'react'
 import Forms from '../../component/molecules/Form'
-import { useNavigate  } from 'react-router-dom';
+// import { useNavigate  } from 'react-router-dom';
 
 
 const Payment = () => {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
   
   const avatarPage = (e) => {
     e.preventDefault();
-    navigate('/avatar')
+    console.log('tes')
   }
 
   return (

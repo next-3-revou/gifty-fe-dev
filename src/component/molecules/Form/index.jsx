@@ -105,7 +105,7 @@ const Forms = ({type, onClick, title}) => {
           />
         </div>
         <div className="flex items-center justify-center">
-          <Buttons title={"Save"} size={"sm"} onClick={onClick} />
+          <Buttons title={"Next"} size={"sm"} onClick={onClick} />
         </div>
       </>
     )    
