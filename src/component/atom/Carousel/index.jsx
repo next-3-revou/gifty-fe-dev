@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useRef, useState } from 'react'
 import Slider from "react-slick";
-import { Link } from "react-router-dom";
-import { Button, Modal } from 'antd';
 import './styles.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -15,7 +13,6 @@ import CarouselList from '../CarouselList';
 
 const Carousels = ({onClick}) => {
   const [count, setCount] = useState(0)
-  const [open, setOpen] = useState(false);
 
   let sliderRef = useRef(null);
   const next = () => {

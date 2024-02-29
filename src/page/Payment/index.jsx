@@ -1,7 +1,15 @@
 // import React from 'react'
 import Forms from '../../component/molecules/Form'
+import { useNavigate  } from 'react-router-dom';
+
 
 const Payment = () => {
+	const navigate = useNavigate();
+  
+  const avatarPage = (e) => {
+    e.preventDefault();
+    navigate('/avatar')
+  }
 
   return (
     <>
@@ -15,7 +23,7 @@ const Payment = () => {
               <div className="flex h-full flex-col justify-between">
                 <div className="mt-6">
                   <div className="relative pt-20 pb-20">
-                    <Forms type={"payment"} title={"One more to go, add your Payment Information"} />
+                    <Forms type={"payment"} title={"One more to go, add your Payment Information"} onClick={(e) => avatarPage(e)} />
                   </div>
                 </div>
               </div>

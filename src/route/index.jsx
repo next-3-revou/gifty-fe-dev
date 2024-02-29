@@ -1,15 +1,15 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from '../page/Dashboard'
 import FrontPage from '../page/FrontPage';
-import SignUp from '../page/SignUp';
 import Payment from '../page/Payment';
+import Avatars from '../page/Avatar';
 
 export const PublicRoutes = () => {
   return (
       <Routes>
           <Route path='/' element={<FrontPage />} />
-          <Route path='/signup' element={<SignUp />} />
-          <Route path='/paymethod' element={<Payment />} />          
+          <Route path='/paymethod' element={<Payment />} />
+          <Route path='/avatar' element={<Avatars />} />
           <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
   );

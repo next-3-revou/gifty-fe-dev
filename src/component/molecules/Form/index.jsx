@@ -48,7 +48,7 @@ const Forms = ({type, onClick, title}) => {
       </>
     
       )
-  } else {
+  } else if(type === "payment") {
     return (
       <>
         <div className="form-titles text-black">
@@ -87,12 +87,28 @@ const Forms = ({type, onClick, title}) => {
             <p><span className="text-red-600">*</span>This payment information will automatically added as your payment info in split bill session</p>
           </div>
           <div className="flex items-center justify-center">
-            <Buttons title={"Save"} size={"sm"} />
+            <Buttons title={"Save"} size={"sm"} onClick={onClick} />
           </div>
         </form>
     
       </>
     )
+  } else {
+    return (
+      <>
+        <div className="mb-4 pb-32">
+          <input
+            className="shadow appearance-none border border-[#969696] rounded w-9/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="username"
+            type="text"
+            placeholder="Username"
+          />
+        </div>
+        <div className="flex items-center justify-center">
+          <Buttons title={"Save"} size={"sm"} onClick={onClick} />
+        </div>
+      </>
+    )    
   }
 }
 
