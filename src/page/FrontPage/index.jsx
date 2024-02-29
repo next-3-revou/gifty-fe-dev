@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Modal } from 'antd';
+import { useNavigate  } from 'react-router-dom';
 
 import Carousels from '../../component/atom/Carousel'
 import front1 from '../../uploads/images/front1.png'
@@ -7,6 +8,7 @@ import Forms from '../../component/molecules/Form';
 import './styles.css'
 
 const FrontPage = () => {
+  const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
   
@@ -20,6 +22,11 @@ const FrontPage = () => {
 
   const handleCancel = () => { 
     setOpen(false);
+  }
+
+  const paymentPage = (e) => {
+    e.preventDefault();
+    navigate('/paymethod')
   }
 
 
@@ -48,7 +55,7 @@ const FrontPage = () => {
           onOk={handleOk}
           onCancel={handleCancel}
         >
-          <Forms />
+          <Forms type={"signup"} onClick={(e) => paymentPage(e)} />
         </Modal>
       </main>
     </>
