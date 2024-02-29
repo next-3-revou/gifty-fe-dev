@@ -26,7 +26,7 @@ const FrontPage = () => {
 
   const paymentPage = (e) => {
     e.preventDefault();
-    navigate('/paymethod')
+    navigate('/avatar')
   }
 
 

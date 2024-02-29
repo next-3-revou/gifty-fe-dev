@@ -1,10 +1,18 @@
 // import React from 'react'
 import { Avatar} from 'antd';
+import { useNavigate  } from 'react-router-dom';
 import user from '../../uploads/images/user.png'
 import Forms from '../../component/molecules/Form';
 import './styles.css'
 
 const Avatars = () => {	
+  const navigate = useNavigate();
+
+  const toPaymentPage = (e) => {
+    e.preventDefault()
+    navigate('/paymethod')
+  }
+  
 	return (
 		<>
 			<main className="bg-gray-200">
@@ -25,7 +33,7 @@ const Avatars = () => {
 										<Avatar size={125} src={user} />
 										</div>
 										<div className="avatar-content py-3">
-											<Forms type={"avatar"} />												
+											<Forms type={"avatar"} onClick={(e) => toPaymentPage(e)} />												
 										</div>
 									</div>
 								</div>
