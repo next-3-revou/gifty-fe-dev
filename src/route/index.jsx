@@ -3,6 +3,7 @@ import Dashboard from '../page/Dashboard'
 import FrontPage from '../page/FrontPage';
 import Payment from '../page/Payment';
 import Avatars from '../page/Avatar';
+import SplitBillDetails from '../page/SplitBillDetails';
 
 export const PublicRoutes = () => {
   return (
@@ -10,6 +11,7 @@ export const PublicRoutes = () => {
           <Route path='/' element={<FrontPage />} />
           <Route path='/paymethod' element={<Payment />} />
           <Route path='/avatar' element={<Avatars />} />
+          <Route path='/split' element={<SplitBillDetails />} />
           <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
   );
