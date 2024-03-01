@@ -2,9 +2,11 @@
 // import React from 'react'
 
 import Buttons from "../../atom/Button"
+import Texts from "../../atom/Text"
 import { Select } from 'antd';
 // import { Routes, Route, useParams, useNavigate  } from 'react-router-dom';
 import './styles.css'
+import LabelAtom from "../../atom/Label";
 const { Option } = Select;
 
 const Forms = ({type, onClick, title}) => {
@@ -40,6 +42,7 @@ const Forms = ({type, onClick, title}) => {
               placeholder="Password"
             />
           </div>
+          
           <div className="flex items-center justify-center">
             <Buttons title={"Sign Up"} size={"sm"} onClick={onClick} />
           </div>
