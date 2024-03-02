@@ -5,6 +5,15 @@ const TextLabel = (props) => {
     )
 }
 
+const TextGeneral = ({ label,size,textcolor }) => {
+    //text general no allign
+    return (
+        <div className={`font-inter font-bold ${size} leading-22 tracking-tighter ${textcolor} `}>
+            {label}
+        </div>
+    );
+};
+
 const Title = (props) => {
     //text untuk judul
     const { label,size,textcolor } = props;
@@ -26,4 +35,4 @@ const SubTitle = (props) => {
 };
 
 
-export { TextLabel, Title, SubTitle }
+export { TextLabel, Title, SubTitle, TextGeneral }
