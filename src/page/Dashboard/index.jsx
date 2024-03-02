@@ -3,6 +3,7 @@ import { Avatar} from 'antd';
 import user from '../../uploads/images/user.png'
 import { TextGeneral, TextLabel } from '../../component/atom/Text';
 import TabPanel from '../../component/atom/Tabs';
+import Navbar from '../../component/molecules/Navbar';
 
 const Profiles = () => {
   return (
@@ -38,6 +39,7 @@ const Profiles = () => {
                             <div className="profiles-tab">
                               <TabPanel />
                             </div>
+                            <Navbar />
                           </div>
                       </div>
                   </div>
