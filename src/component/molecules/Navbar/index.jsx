@@ -1,8 +1,9 @@
 // import React from 'react'
-
+import { useNavigate  } from 'react-router-dom';
 import Buttons from "../../atom/Button"
 
 const Navbar = () => {
+	const navigate = useNavigate();
 
 	const profilePage = (e) => { 
 		e.preventDefault();
@@ -11,6 +12,7 @@ const Navbar = () => {
 
 	const addWishlist = (e) => {
 		e.preventDefault();
+		navigate('/wishlist')
 		console.log('add')
 	}
 
