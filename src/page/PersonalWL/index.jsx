@@ -12,6 +12,11 @@ const PersonalWL = () => {
 		navigate('/profile')
 	}
 
+	const onPrev = (e) => { 
+		e.preventDefault();
+		navigate(-1)
+	}
+
   return (
     <main className="bg-gray-200">
 			<section
@@ -23,7 +28,7 @@ const PersonalWL = () => {
 						<div className="flex h-full flex-col justify-between">
 							<div className="mt-6">
 								<div className="relative pb-20">
-									<Breadcrumb title={"Wishlist Detail"} />
+									<Breadcrumb title={"Wishlist Detail"} type={"detailwishlist"} onClick={(e) => onPrev(e)} />
 									<Forms type={"personalwl"} onClick={(e) => saveWL(e)} />   
 								</div>
 							</div>
