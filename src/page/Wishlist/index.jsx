@@ -13,6 +13,11 @@ const Wishlist = () => {
     navigate('/wishlist/personal')
   }
 
+  const onPrev = (e) => { 
+		e.preventDefault();
+		navigate(-1)
+	}
+
   return (
     <main className="bg-gray-200">
     <section
@@ -24,7 +29,7 @@ const Wishlist = () => {
           <div className="flex h-full flex-col justify-between">
             <div className="mt-6">
               <div className="relative pb-20">
-                <Breadcrumb title={"New Wishlist"} />
+                <Breadcrumb title={"New Wishlist"} type={"newwishlist"} onClick={(e) => onPrev(e)} />
                 <div className="wish-ask text-black">
                     <p>What type of wishlist you want to create ? </p>
                 </div>
