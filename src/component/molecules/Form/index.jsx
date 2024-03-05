@@ -8,6 +8,7 @@ import './styles.css'
 import FormSignUp from "../FormSignUp";
 import FormAvatar from "../FormAvatar";
 import FormPayment from "../FormPayment";
+import FormPersonalWL from "../FormPersoWL";
 const { Option } = Select;
 
 const Forms = ({type, onClick, title}) => {
@@ -26,19 +27,7 @@ const Forms = ({type, onClick, title}) => {
     )
   } else {
     return (
-      <>
-        <div className="mb-4 pb-32">
-          <input
-            className="shadow appearance-none border border-[#969696] rounded w-9/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
-            type="text"
-            placeholder="Username"
-          />
-        </div>
-        <div className="flex items-center justify-center">
-          <Buttons title={"Next"} size={"sm"} onClick={onClick} />
-        </div>
-      </>
+			<FormPersonalWL title={title} onClick={onClick} />
     )    
   }
 }
