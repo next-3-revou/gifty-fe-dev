@@ -16,7 +16,7 @@ const Wishlist = () => {
           <div className="flex h-full flex-col justify-between">
             <div className="mt-6">
               <div className="relative pb-20">
-                <Breadcrumb />
+                <Breadcrumb title={"New Wishlist"} />
                 <div className="wish-ask text-black">
                     <p>What type of wishlist you want to create ? </p>
                 </div>
