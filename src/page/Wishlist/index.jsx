@@ -1,10 +1,18 @@
 import React from 'react'
+import { useNavigate  } from 'react-router-dom';
 import CardWishlist from '../../component/molecules/CardWishlist'
 import lock from '../../uploads/images/lock.png'
 import team from '../../uploads/images/team.png'
 import Breadcrumb from '../../component/atom/Breadcrumb'
 
 const Wishlist = () => {
+	const navigate = useNavigate();
+
+  const checkClick = (e) => {
+    e.preventDefault();
+    navigate('/wishlist/personal')
+  }
+
   return (
     <main className="bg-gray-200">
     <section
@@ -20,7 +28,7 @@ const Wishlist = () => {
                 <div className="wish-ask text-black">
                     <p>What type of wishlist you want to create ? </p>
                 </div>
-                <CardWishlist images={lock} cardTitle={"Private Wishlist" } cardDesc={"A Private wishlist only for you"} />
+                <CardWishlist images={lock} cardTitle={"Private Wishlist" } cardDesc={"A Private wishlist only for you"} onClick={(e) => checkClick(e)} />
                 <CardWishlist images={team} cardTitle={"Collaboration Wishlist" } cardDesc={"Share with friends"} />                
               </div>
             </div>

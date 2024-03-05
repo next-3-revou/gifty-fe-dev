@@ -1,7 +1,17 @@
 import React from 'react'
+import { useNavigate  } from 'react-router-dom';
 import Breadcrumb from '../../component/atom/Breadcrumb'
+import Forms from '../../component/molecules/Form'
 
 const PersonalWL = () => {
+
+	const navigate = useNavigate();
+
+	const saveWL = (e) => {
+		e.preventDefault();
+		navigate('/profile')
+	}
+
   return (
     <main className="bg-gray-200">
 			<section
@@ -14,11 +24,7 @@ const PersonalWL = () => {
 							<div className="mt-6">
 								<div className="relative pb-20">
 									<Breadcrumb title={"Wishlist Detail"} />
-									<div className="wish-ask text-black">
-											<p>What type of wishlist you want to create ? </p>
-									</div>
-									<CardWishlist images={lock} cardTitle={"Private Wishlist" } cardDesc={"A Private wishlist only for you"} />
-									<CardWishlist images={team} cardTitle={"Collaboration Wishlist" } cardDesc={"Share with friends"} />                
+									<Forms type={"personalwl"} onClick={(e) => saveWL(e)} />   
 								</div>
 							</div>
 						</div>
