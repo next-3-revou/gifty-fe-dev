@@ -1,7 +1,8 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
 import Buttons from '../../atom/Button'
 
-const FormSignUp = ({title, onClick}) => {
+const FormSignUp = ({title, onClick, onChangeName, onChangeEmail, onChangePW}) => {
+
   return (
 		<>
 			<div className="form-titles">
@@ -13,6 +14,7 @@ const FormSignUp = ({title, onClick}) => {
 						className="shadow appearance-none border border-[#969696] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 						id="username"
 						type="text"
+						onChange={onChangeName}
 						placeholder="Name"
 					/>
 				</div>
@@ -21,6 +23,7 @@ const FormSignUp = ({title, onClick}) => {
 						className="shadow appearance-none border border-[#969696] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 						id="email"
 						type="email"
+						onChange={onChangeEmail}
 						placeholder="Email"
 					/>
 				</div>
@@ -29,6 +32,7 @@ const FormSignUp = ({title, onClick}) => {
 						className="shadow appearance-none border border-[#969696] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 						id="password"
 						type="password"
+						onChange={onChangePW}
 						placeholder="Password"
 					/>
 				</div>
