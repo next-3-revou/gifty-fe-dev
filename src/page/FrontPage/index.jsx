@@ -7,7 +7,6 @@ import axios from "axios";
 
 import Carousels from '../../component/atom/Carousel'
 import front1 from '../../uploads/images/front1.png'
-// import Forms from '../../component/molecules/Form';
 import './styles.css'
 import Buttons from '../../component/atom/Button';
 
@@ -49,7 +48,7 @@ const FrontPage = () => {
       })
       
       if(response.status === 200) {
-        navigate('/avatar')
+        navigate('/')
       }
     } catch (error) {
       setLoading(false)
@@ -57,9 +56,7 @@ const FrontPage = () => {
         type: 'error',
         content: error.message,
       })
-
     }
-    // navigate('/avatar')
   }
 
   const validationSchema = yup.object({

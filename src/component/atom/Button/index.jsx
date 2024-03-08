@@ -21,7 +21,7 @@ const Buttons = ({title, size, onClick,isIcon, types}) => {
           <h4 className='text-black'>Add List</h4>
         </>
       )
-    } else {
+    } else if(types === "listhistory") {
       return (
         <>
           <Button type="primary" icon={<GiftOutlined />} shape="circle" className='bg-[#1FAD66]' size={"large"}  onClick={onClick} /> 
@@ -32,7 +32,7 @@ const Buttons = ({title, size, onClick,isIcon, types}) => {
 
   } else {
     return (
-      <button className={`bg-[#1FAD66] text-white w-24 h-6 rounded-full p-0 `} onClick={onClick}>
+      <button type="submit" className={`bg-[#1FAD66] text-white w-24 h-6 rounded-full p-0 `} onClick={onClick}>
         <p className={`text-${size === null ? 'lg' : size}`}>{title}</p>
       </button>    
     )
