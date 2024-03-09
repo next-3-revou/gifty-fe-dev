@@ -31,7 +31,7 @@ const Navbar = () => {
 					<Buttons isIcon={true} types={"add"} title={"User"} size={"lg"} onClick={(e) => addWishlist(e)} />
 				</div>
 				<div className="menus px-2">
-					<Buttons isIcon={true} types={"history"} title={"User"} size={"lg"} onClick={(e) => historyPage(e)} />
+					<Buttons isIcon={true} types={"listhistory"} title={"User"} size={"lg"} onClick={(e) => historyPage(e)} />
 				</div>
 			</div>
 		</div>

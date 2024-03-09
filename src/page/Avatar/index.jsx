@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Avatar} from 'antd';
 import { useNavigate  } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Spin, message } from 'antd';
 import user from '../../uploads/images/user.png'
 import { useFormik } from 'formik';
@@ -14,6 +15,7 @@ const URL = import.meta.env.VITE_BE_ENDPOINT
 
 const Avatars = () => {	
   const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const tokens = JSON.parse(localStorage.getItem('accessToken'));
 
 	const [messageApi, contextHolder] = message.useMessage();
@@ -31,7 +33,12 @@ const Avatars = () => {
         },
       });
 
-			console.log(response)
+			if(response.status === 200) {
+				setLoading(false)
+				dispatch({type: 'ADD_USERID', payload: response.data.data})
+				navigate('/paymethod',{ replace: true })
+			}
+
 		} catch (error) {
 			setLoading(false)
 			messageApi.open({
