@@ -48,7 +48,14 @@ const FrontPage = () => {
       })
       
       if(response.status === 200) {
-        navigate('/')
+        setLoading(false)
+        messageApi.open({
+          type: 'success',
+          content: 'Register Success',
+        })
+        setTimeout(() => {
+          navigate('/',{ replace: true })
+        }, '2000');
       }
     } catch (error) {
       setLoading(false)
