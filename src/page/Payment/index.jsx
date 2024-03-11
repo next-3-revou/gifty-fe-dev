@@ -24,14 +24,9 @@ const Payment = () => {
 	const [loading, setLoading] = useState(false)
   
   const toProfilePage = async (values) => {
-    console.log(values)
 
     try {
-      // const response = await axios.post(`${URL}/auth/login`, values , {
-      //   headers: {
-      //     "Content-Type": "application/json"
-      //   }
-      // })
+      setLoading(true)
       const params = {
         userId: userID,
       };
@@ -45,9 +40,22 @@ const Payment = () => {
         },
       });
 
-      console.log(responsed)
+      if(responsed.status === 200) {
+        setLoading(false)        
+        messageApi.open({
+          type: 'success',
+          content: 'Payment info Success',
+        })
+        setTimeout(() => {
+          navigate('/',{ replace: true })
+        }, '2000');
+      }
+
     } catch (error) {
-      console.log(error)
+			messageApi.open({
+				type: 'error',
+				content: error.message,
+			})
     }
   }
 
