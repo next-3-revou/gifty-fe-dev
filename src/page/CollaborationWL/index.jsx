@@ -12,7 +12,7 @@ import moment from 'moment';
 const URL = import.meta.env.VITE_BE_ENDPOINT
 const { TextArea } = Input;
 
-const PersonalWL = () => {
+const CollaborationWL = () => {
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const PersonalWL = () => {
 
 			const payload = {
 				...values,
-				type: 'PERSONAL'
+				type: 'COLLABORATIVE'
 			}
 
       const responsed = await axios.post(`${URL}/wishlist`, payload, {
@@ -175,4 +175,4 @@ const PersonalWL = () => {
   )
 }
 
-export default PersonalWL
+export default CollaborationWL

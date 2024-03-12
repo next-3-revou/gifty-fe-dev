@@ -27,7 +27,7 @@ const Profiles = () => {
 		const tokens = JSON.parse(localStorage.getItem('accessToken'));
 
 		try {
-			const res = await axios.get(`${URL}/user/get/1`, {headers: {
+			const res = await axios.get(`${URL}/user/get/26`, {headers: {
 				Authorization: `Bearer ${tokens}`,
 				'Content-Type': 'application/json',
 			}})

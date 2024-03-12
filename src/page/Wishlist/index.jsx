@@ -13,6 +13,11 @@ const Wishlist = () => {
     navigate('/wishlist/personal')
   }
 
+  const collabWL = (e) => {
+    e.preventDefault();
+    navigate('/wishlist/collaboration')
+  }
+
   const onPrev = (e) => { 
 		e.preventDefault();
 		navigate(-1)
@@ -34,7 +39,7 @@ const Wishlist = () => {
                     <p>What type of wishlist you want to create ? </p>
                 </div>
                 <CardWishlist images={lock} cardTitle={"Private Wishlist" } cardDesc={"A Private wishlist only for you"} onClick={(e) => checkClick(e)} />
-                <CardWishlist images={team} cardTitle={"Collaboration Wishlist" } cardDesc={"Share with friends"} />                
+                <CardWishlist images={team} cardTitle={"Collaboration Wishlist" } cardDesc={"Share with friends"} onClick={(e) => collabWL(e)} />                
               </div>
             </div>
           </div>
