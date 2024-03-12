@@ -5,7 +5,7 @@ import { TextGeneral } from '../Text'
 
 const Breadcrumb = ({type, title, onClick}) => {
   return (
-    <div className='wrapper-menu flex items-center mb-32' onClick={onClick}>
+    <div className='wrapper-menu flex items-center mb-36' onClick={onClick}>
         <div className="bread-icons px-4">
           { type === "newwishlist" &&
             <img src={close} alt="" className='w-6 h-6' />
