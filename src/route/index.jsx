@@ -8,6 +8,7 @@ import Wishlist from '../page/Wishlist';
 import PersonalWL from '../page/PersonalWL';
 import SignIn from '../page/Sign In';
 import CollaborationWL from '../page/CollaborationWL';
+import DetailWL from '../page/DetailWishlist';
 
 export const PublicRoutes = () => {
   return (
@@ -27,7 +28,8 @@ export const PrivateRoutes = () => {
           <Route path='/avatar' element={<Avatars />} />
           <Route path='/wishlist' element={<Wishlist />} />
 					<Route path='/wishlist/personal' element={<PersonalWL />} />
-					<Route path='/wishlist/collaboration' element={<CollaborationWL />} />			
+					<Route path='/wishlist/collaboration' element={<CollaborationWL />} />
+					<Route path='/wishlist/detail/:wishlistId/:wishlistName' element={<DetailWL />} />	
           <Route path='/split' element={<SplitBillDetails />} />                   
           <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>

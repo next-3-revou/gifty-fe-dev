@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { useNavigate  } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Avatar, Spin, message} from 'antd';
 import user from '../../uploads/images/user.png'
 import event from '../../uploads/images/event.png'
@@ -12,6 +14,9 @@ import { useState } from 'react';
 const URL = import.meta.env.VITE_BE_ENDPOINT
 
 const Profiles = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
 	const [load, setLoad] = useState(true)
 	const [data, setData] = useState([])
 	const [messageApi, contextHolder] = message.useMessage();
@@ -22,6 +27,12 @@ const Profiles = () => {
 		}
 
 	}, [])
+
+	const detailsWL = (e, idWishlist, wishlistName) => {
+		e.preventDefault();
+		// console.log('tes')
+		navigate(`/wishlist/detail/${idWishlist}/${wishlistName}`)
+	}
 
 	const getProfile = async () => {
 		const tokens = JSON.parse(localStorage.getItem('accessToken'));
@@ -54,7 +65,7 @@ const Profiles = () => {
 			<div className='flex flex-wrap overflow-y-auto h-[38rem]'>
 				{ personalWL.map((cur, key) => {
 					return (
-						<div className='flex-content w-1/2 p-6' key={key}>
+						<div className='flex-content w-1/2 p-6' key={key} onClick={(e) => detailsWL(e, cur.id, cur.title)}>
 							<div className="event-content">
 								<div className='event-images'>
 									<img src={event} />
@@ -79,7 +90,7 @@ const Profiles = () => {
 			<div className='flex flex-wrap overflow-y-auto h-[38rem]'>
 				{collabWL.map((cur, key) => {
 					return (
-						<div className='flex-content w-1/2 p-6' key={key}>
+						<div className='flex-content w-1/2 p-6' key={key} onClick={(e) => detailsWL(e, cur.id, cur.title)}>
 							<div className="event-content">
 								<div className='event-images'>
 									<img src={event} />
