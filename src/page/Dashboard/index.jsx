@@ -30,15 +30,15 @@ const Profiles = () => {
 
 	const detailsWL = (e, idWishlist, wishlistName) => {
 		e.preventDefault();
-		// console.log('tes')
 		navigate(`/wishlist/detail/${idWishlist}/${wishlistName}`)
 	}
 
 	const getProfile = async () => {
 		const tokens = JSON.parse(localStorage.getItem('accessToken'));
+		const userId = JSON.parse(localStorage.getItem('userId'));
 
 		try {
-			const res = await axios.get(`${URL}/user/get/26`, {headers: {
+			const res = await axios.get(`${URL}/user/get/${userId}`, {headers: {
 				Authorization: `Bearer ${tokens}`,
 				'Content-Type': 'application/json',
 			}})
