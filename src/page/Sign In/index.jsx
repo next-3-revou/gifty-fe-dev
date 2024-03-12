@@ -41,7 +41,9 @@ const SignIn = () => {
 			if (response.status === 200) {
 				setLoading(false)
 				dispatch({type: 'ADD_TOKEN', payload: response.data.data})
+				dispatch({type: 'ADD_USERID', payload: response.data.data})
 				storeData('accessToken', response.data.data.token)
+				storeData('userId', response.data.data.userId)
 				storeData('hasSetUsername', response.data.data.hasSetUsername)
 
 				const hasUsername = localStorage.getItem("hasSetUsername");
