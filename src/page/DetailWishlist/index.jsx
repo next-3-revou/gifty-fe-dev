@@ -73,7 +73,7 @@ const DetailWL = () => {
 		return (
       <>
         <div className='add-item-sections'>
-          <p className='text-2xl text-[#969696] py-5'>No Items Yet</p>
+          <p className='text-2xl text-[#969696] py-5'>No Items Found</p>
           <Buttons type={"add-item"} title={"Add Item"} onClick={() => console.log('Add Item')} />
         </div>
 
