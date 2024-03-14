@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Breadcrumb from '../../component/atom/Breadcrumb'
-import { Spin, message,  DatePicker, Input } from 'antd';
+import { Spin, message, DatePicker, Input } from 'antd';
 import gift from '../../uploads/images/gift-icon.png'
 import axios from "axios";
 import Buttons from '../../component/atom/Button';
@@ -10,48 +10,34 @@ import Buttons from '../../component/atom/Button';
 const URL = import.meta.env.VITE_BE_ENDPOINT
 
 const DetailWL = () => {
-  const params = useParams()
+	const params = useParams()
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	const [messageApi, contextHolder] = message.useMessage();
 	const [loading, setLoading] = useState(true)
-  const [data, setData] = useState([])
+	const [data, setData] = useState([])
 
-  useEffect(() => {
-    if(loading) {
-      getItemWL()
-    }
-  }, [])
+	useEffect(() => {
+		if (loading) {
+			getItemWL()
+		}
+	}, [])
 
-  const RenderFunc = (data) => {
 
-		let itemWL = [
-      {
-        id: 1,
-        title: 'tes item 1'
-      },
-      {
-        id: 2,
-        title: 'tes item 2'
-      },
-      {
-        id: 3,
-        title: 'tes item 3'
-      },
-      {
-        id: 4,
-        title: 'tes item 4'
-      },
-      {
-        id: 5,
-        title: 'tes item 5'
-      }
-    ]
+	const AddItem = () => {
+		// e.preventDefault();
+		navigate('/addItem', { state: { wishlistId: params.wishlistId } })
+	}
 
-		return(
+	const RenderFunc = (data) => {
+		const nilai = data.data
+		console.log(nilai)
+		let itemWL = nilai
+
+		return (
 			<div className='flex flex-wrap overflow-y-auto h-[38rem]'>
-				{ itemWL.map((cur, key) => {
+				{itemWL.map((cur, key) => {
 					return (
 						<div className='flex-content w-1/2 p-6' key={key}>
 							<div className="event-content">
@@ -59,7 +45,8 @@ const DetailWL = () => {
 									<img src={gift} />
 								</div>
 								<div className="event-caption">
-									<p className='text-black'>{cur.title}</p>
+									<p className='text-black'>{cur.name}</p>
+									<p className='text-black'>{cur.price}</p>
 								</div>
 							</div>
 						</div>
@@ -69,46 +56,48 @@ const DetailWL = () => {
 		);
 	}
 
-  const RenderNull = () => {
+	const RenderNull = () => {
 		return (
-      <>
-        <div className='add-item-sections'>
-          <p className='text-2xl text-[#969696] py-5'>No Items Found</p>
-          <Buttons type={"add-item"} title={"Add Item"} onClick={() => console.log('Add Item')} />
-        </div>
+			<>
+				<div className='add-item-sections'>
+					<p className='text-2xl text-[#969696] py-5'>No Items Found</p>
+					<Buttons type={"add-item"} title={"Add Item"} onClick={(e) => AddItem(e)} />
+				</div>
 
-      </>
+			</>
 		)
 	}
 
-  const getItemWL = async () => {
-    const tokens = JSON.parse(localStorage.getItem('accessToken'));
-    try {
-      const res = await axios.get(`${URL}/wishlist-item/${params.wishlistId}`, {headers: {
-				Authorization: `Bearer ${tokens}`,
-				'Content-Type': 'application/json',
-			}})
+	const getItemWL = async () => {
+		const tokens = JSON.parse(localStorage.getItem('accessToken'));
+		try {
+			const res = await axios.get(`${URL}/wishlist-item/${params.wishlistId}`, {
+				headers: {
+					Authorization: `Bearer ${tokens}`,
+					'Content-Type': 'application/json',
+				}
+			})
 
-      if(res.status === 200) {
-        setLoading(false)
-        setData(res.data.data)
-      }
+			if (res.status === 200) {
+				setLoading(false)
+				setData(res.data.data)
+			}
 
-    } catch (error) {
+		} catch (error) {
 			messageApi.open({
 				type: 'error',
 				content: error.message,
 			})
-    }
-  }
-  
-	const onPrev = (e) => { 
+		}
+	}
+
+	const onPrev = (e) => {
 		e.preventDefault();
 		navigate(-1)
 	}
 
 
-  return (
+	return (
 		<>
 			{contextHolder}
 			<main className="bg-gray-200">
@@ -122,12 +111,22 @@ const DetailWL = () => {
 								<div className="mt-6">
 									<div className="relative pb-20">
 										<Breadcrumb title={params.wishlistName} type={"detailwishlist"} onClick={(e) => onPrev(e)} />
-                    <div className="item-wishlist flex justify-center">
-                      { data.length > 0
-                          ?  <RenderFunc data={data} />
-                          :  <RenderNull />
-                      }								
-                    </div>
+										<div className="item-wishlist flex justify-center">
+
+											{data.length > 0
+
+												? (<>
+													<RenderFunc data={data} />
+													
+													<div className='event-images'> <p className='text-2xl text-[#969696] py-1'>Add Item</p> <Buttons type={"add-item"} title={"Add Item"} onClick={() => AddItem()} /> </div>
+												</>)
+
+
+												: <RenderNull />
+											}
+
+
+										</div>
 									</div>
 								</div>
 							</div>
@@ -135,13 +134,13 @@ const DetailWL = () => {
 					</section>
 				</section>
 			</main>
-      { loading && 
+			{loading &&
 				<div className="absolute inset-0 flex justify-center items-center z-[9999] bg-gray-400 bg-opacity-75">
 					<Spin size="large" />
 				</div>
-			} 
+			}
 		</>
-  )
+	)
 }
 
 export default DetailWL
