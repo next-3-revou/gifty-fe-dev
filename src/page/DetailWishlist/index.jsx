@@ -32,7 +32,6 @@ const DetailWL = () => {
 
 	const RenderFunc = (data) => {
 		const nilai = data.data
-		console.log(nilai)
 		let itemWL = nilai
 
 		return (
@@ -112,20 +111,20 @@ const DetailWL = () => {
 									<div className="relative pb-20">
 										<Breadcrumb title={params.wishlistName} type={"detailwishlist"} onClick={(e) => onPrev(e)} />
 										<div className="item-wishlist flex justify-center">
-
 											{data.length > 0
-
 												? (<>
 													<RenderFunc data={data} />
-													
-													<div className='event-images'> <p className='text-2xl text-[#969696] py-1'>Add Item</p> <Buttons type={"add-item"} title={"Add Item"} onClick={() => AddItem()} /> </div>
+													<div className='flex-content w-full p-6'>
+														<div className="event-content">
+															<div className='event-images'>
+																<p className='text-2xl text-[#969696] py-1'>Add Item</p>
+																<Buttons type={"add-item"} title={"Add Item"} onClick={() => AddItem()} />
+															</div>
+														</div>
+													</div>
 												</>)
-
-
 												: <RenderNull />
 											}
-
-
 										</div>
 									</div>
 								</div>
