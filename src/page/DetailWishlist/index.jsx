@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import Breadcrumb from '../../component/atom/Breadcrumb'
-import { Spin, message, DatePicker, Input } from 'antd';
+import { Spin, message } from 'antd';
 import gift from '../../uploads/images/gift-icon.png'
 import axios from "axios";
 import Buttons from '../../component/atom/Button';
@@ -12,7 +11,6 @@ const URL = import.meta.env.VITE_BE_ENDPOINT
 const DetailWL = () => {
 	const params = useParams()
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
 	const [messageApi, contextHolder] = message.useMessage();
 	const [loading, setLoading] = useState(true)
@@ -22,11 +20,10 @@ const DetailWL = () => {
 		if (loading) {
 			getItemWL()
 		}
-	}, [])
+	})
 
 
 	const AddItem = () => {
-		// e.preventDefault();
 		navigate('/addItem', { state: { wishlistId: params.wishlistId } })
 	}
 
@@ -35,7 +32,7 @@ const DetailWL = () => {
 		let itemWL = nilai
 
 		return (
-			<div className='flex flex-wrap overflow-y-auto h-[38rem]'>
+			<div className='flex flex-wrap overflow-y-auto h-[34rem]'>
 				{itemWL.map((cur, key) => {
 					return (
 						<div className='flex-content w-1/2 p-6' key={key}>
@@ -45,7 +42,7 @@ const DetailWL = () => {
 								</div>
 								<div className="event-caption">
 									<p className='text-black'>{cur.name}</p>
-									<p className='text-black'>{cur.price}</p>
+									<p className='text-black'>Rp {cur.price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</p>
 								</div>
 							</div>
 						</div>
@@ -60,6 +57,17 @@ const DetailWL = () => {
 			<>
 				<div className='add-item-sections'>
 					<p className='text-2xl text-[#969696] py-5'>No Items Found</p>
+					<Buttons type={"add-item"} title={"Add Item"} onClick={(e) => AddItem(e)} />
+				</div>
+
+			</>
+		)
+	}
+
+	const RenderButtons = () => {
+		return (
+			<>
+				<div className='add-item-sections'>
 					<Buttons type={"add-item"} title={"Add Item"} onClick={(e) => AddItem(e)} />
 				</div>
 
@@ -112,20 +120,17 @@ const DetailWL = () => {
 										<Breadcrumb title={params.wishlistName} type={"detailwishlist"} onClick={(e) => onPrev(e)} />
 										<div className="item-wishlist flex justify-center">
 											{data.length > 0
-												? (<>
-													<RenderFunc data={data} />
-													<div className='flex-content w-full p-6'>
-														<div className="event-content">
-															<div className='event-images'>
-																<p className='text-2xl text-[#969696] py-1'>Add Item</p>
-																<Buttons type={"add-item"} title={"Add Item"} onClick={() => AddItem()} />
-															</div>
-														</div>
-													</div>
-												</>)
+												? (
+													<>
+														<RenderFunc data={data} />
+													</>
+												)
 												: <RenderNull />
 											}
 										</div>
+										{data.length > 0 &&
+											<RenderButtons />
+										}
 									</div>
 								</div>
 							</div>
