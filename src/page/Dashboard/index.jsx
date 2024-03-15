@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useNavigate  } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { Avatar, Spin, message} from 'antd';
 import user from '../../uploads/images/user.png'
 import event from '../../uploads/images/event.png'
@@ -15,7 +14,6 @@ const URL = import.meta.env.VITE_BE_ENDPOINT
 
 const Profiles = () => {
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
 	const [load, setLoad] = useState(true)
 	const [data, setData] = useState([])
